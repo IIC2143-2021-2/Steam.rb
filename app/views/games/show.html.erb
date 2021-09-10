@@ -1,0 +1,27 @@
+<h1>
+    <%= @game.name %>
+</h1>
+
+<p>
+    <strong>Rating: </strong>
+    <%= @game.rating %>
+</p>
+
+<p>
+    <strong>Description: </strong>
+    <%= @game.description %>
+</p>
+
+<p>
+    <strong>Price: </strong>
+    <%= @game.price %>
+</p>
+
+<p>
+    <strong>Category: </strong>
+    <%= @game.category %>
+</p>
+
+<%= link_to 'Go back', games_index_path %>
+<%= link_to 'Edit game', games_edit_path(:id => @game.id) %>
+<%= link_to 'Delete game', games_delete_path(:id => @game.id), method: :delete %>

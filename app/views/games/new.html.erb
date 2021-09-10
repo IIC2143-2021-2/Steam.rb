@@ -1,0 +1,36 @@
+<h1>Upload a new game</h1>
+
+<%= form_with(model: @game, method: :post) do |form| %>
+
+    <div>
+        <%= form.label :Name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :Rating %>
+        <%= form.number_field :rating %>
+    </div>
+
+    <div>
+        <%= form.label :Description %>
+        <%= form.text_field :description %>
+    </div>
+
+    <div>
+        <%= form.label :Price %>
+        <%= form.number_field :price %>
+    </div>
+
+    <div>
+        <%= form.label :Category %>
+        <%= form.text_field :category %>
+    </div>
+
+    <div>
+        <%= form.submit 'Create game' %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Go back', games_index_path %>
