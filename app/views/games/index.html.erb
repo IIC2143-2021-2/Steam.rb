@@ -1,6 +1,9 @@
 <h1>Games</h1>
 
 <%= notice %>
+<% if current_user %>
+    <%= link_to ' Ver Perfil ', users_show_path(current_user.id)%>
+<% end %>
 
 <table align='center'>
     <thead>

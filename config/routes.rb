@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'games/index'
   get 'games/show'
 
+  get "users/:id", to: "users#show", as: "users_show"
 
   ######## UPDATE ########
   get 'games/edit'
