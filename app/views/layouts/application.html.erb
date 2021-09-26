@@ -11,5 +11,14 @@
 
   <body align='center'>
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if current_user %>
+      <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Iniciar Sesión", new_user_session_path %>
+      <%= link_to "Registrarme", new_user_registration_path %>
+    <% end %>
+
   </body>
 </html>
