@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 45cb8e87fc199cd72e4122d8ae75a1808b7b3ba3
+  branch: master
+  specs:
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -84,6 +92,11 @@ GEM
     docile (1.4.0)
     erubi (1.10.0)
     execjs (2.8.1)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.4)
     globalid (0.5.2)
       activesupport (>= 5.0)
@@ -241,6 +254,8 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise (~> 4.7, >= 4.7.3)
+  factory_bot_rails
+  faker!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -250,7 +265,7 @@ DEPENDENCIES
   rspec-rails (~> 5.0)
   sass-rails (~> 5.0)
   selenium-webdriver
-  simplecov (~> 0.21.2)
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
