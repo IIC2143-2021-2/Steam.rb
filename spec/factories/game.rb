@@ -6,6 +6,6 @@ FactoryBot.define do
       rating { 10.002 }
       price { 201 }
       category { 'Adventure' }
-      # association :user, factory: :user
+      association :user, factory: :user
     end
 end

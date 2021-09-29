@@ -43,5 +43,9 @@ RSpec.describe Game, type: :model do
     expect(game).not_to be_valid
   end
 
+  it 'is not valid without user' do
+    game.user_id = nil
+    expect(game).not_to be_valid
+  end
 
 end
