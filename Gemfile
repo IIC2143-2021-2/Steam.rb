@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.6'
+ruby '2.6.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
@@ -63,8 +63,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.7', '>= 4.7.3'
 
-gem "rspec", "~> 3.10"
-
 gem "rspec-rails", "~> 5.0"
 
-gem "simplecov", "~> 0.21.2"
+gem 'simplecov', require: false
+
+gem "factory_bot_rails"
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
