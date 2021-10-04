@@ -1,0 +1,16 @@
+<h1>Upload a new character</h1>
+
+<%= form_with(model: @character, method: :post) do |form| %>
+
+    <div>
+        <%= form.label :Name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.submit 'Create character' %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Go back', characters_index_path %>

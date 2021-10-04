@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'characters/new'
+  get 'characters/create'
+  get 'characters/index'
+  get 'characters/edit'
+  get 'characters/update'
+  get 'characters/delete'
   devise_for :users, controllers: {
     sessions: 'users/sessions', 
     registrations: 'users/registrations'
@@ -27,6 +33,10 @@ Rails.application.routes.draw do
 
   ######## DELETE ########
   delete 'games/delete', to: 'games#delete', as: 'games_delete'
+
+
+  ######## RESOURCES ######
+  resources :characters
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

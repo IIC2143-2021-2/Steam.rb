@@ -1,0 +1,15 @@
+<h1>Edit your character</h1>
+
+<%= form_with(model: @character, method: :patch, url: characters_path(:id => @character.id)) do |form| %>
+
+    <div>
+        <%= form.label :Name %>
+        <%= form.text_field :name %>
+    </div>
+
+        <%= form.submit 'Edit character' %>
+    </div>
+
+<% end %>
+
+<%= link_to 'Go back', character_path(:id => @character.id) %>

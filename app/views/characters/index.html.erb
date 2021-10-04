@@ -1,0 +1,26 @@
+<h1>Characters</h1>
+
+<%= notice %>
+<% if current_user %>
+    <%= link_to ' Ver Perfil ', users_show_path(current_user.id)%>
+<% end %>
+
+<%= link_to 'Go back', games_index_path %>
+<table align='center'>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th colspan='3'></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @characters.each do |character| %>
+            <tr>
+                <td><%= character.name %></td>
+                <td><%= link_to 'View details', character_path(:id => character.id) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Upload a new character', characters_new_path %>
