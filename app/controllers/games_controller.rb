@@ -5,12 +5,20 @@ class GamesController < ApplicationController
 
   def create
     @games_params = params.require(:game).permit(:name, :rating, :description, :price, :category)
-    @game = Game.create(@games_params)
-    if @game.save
-      redirect_to games_index_path, notice: 'Game successfully created'
+    #@game = Game.create(@games_params)
+    if current_user
+      @user = current_user ##############
+      @game = @user.games.create(@games_params)
+      if @game.save
+        redirect_to games_index_path, notice: 'Game successfully created'
+      else
+        redirect_to games_index_path, notice: 'Error while creating the game'
+      end
     else
-      redirect_to games_index_path, notice: 'Error while creating the game'
+      redirect_to user_session_path, notice: 'Error while creating the game, no user logged in'
     end
+    # @user = current_user ##############
+    # @game = @user.games.create(@games_params)
   end
 
   def index
