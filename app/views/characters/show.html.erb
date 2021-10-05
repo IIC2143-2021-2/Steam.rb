@@ -7,4 +7,4 @@
 <%= link_to 'Go back', characters_index_path %>
 <%= link_to 'Edit character', characters_edit_path(:id => @character.id) %>
 
-<%= link_to 'Dshow', "characters/#{@character.id}", method: :get %>
+<%= link_to 'Delete', character_path(@character.id), method: :delete %>
