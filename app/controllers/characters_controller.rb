@@ -4,7 +4,7 @@ class CharactersController < ApplicationController
   end
 
   def create
-    @characters_params = params.require(:character).permit(:name)
+    @characters_params = params.require(:character).permit(:name, :speed, :attack, :defense)
     @character = Character.create(@characters_params)
     if @character.save
       redirect_to characters_index_path, notice: 'Character successfully created'
@@ -27,7 +27,7 @@ class CharactersController < ApplicationController
 
   def update
     @character = Character.find(params[:id])
-    @characters_new_params = params.require(:character).permit(:name)
+    @characters_new_params = params.require(:character).permit(:name, :speed, :attack, :defense)
     if @character.update(@characters_new_params)
       redirect_to characters_index_path, notice: 'Character edited correctly'
     else
