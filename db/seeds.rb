@@ -10,10 +10,13 @@
 
 require 'faker'
 
-Character.create(name: "harry", attack: Faker::Number.between(from: 1, to: 100), defense: Faker::Number.between(from: 1, to: 100), speed: Faker::Number.between(from: 1, to: 100))
-Character.create(name: "ron", attack: Faker::Number.between(from: 1, to: 100), defense: Faker::Number.between(from: 1, to: 100), speed: Faker::Number.between(from: 1, to: 100))
-Character.create(name: "hermione", attack: Faker::Number.between(from: 1, to: 100), defense: Faker::Number.between(from: 1, to: 100), speed: Faker::Number.between(from: 1, to: 100))
+@user= User.create(username: "Peje", email: "peje@uc.cl", phone: "18231414", age: 20, password: '123456', password_confirmation: '123456')
+@character1= Character.create(name: "harry", attack: Faker::Number.between(from: 1, to: 100), defense: Faker::Number.between(from: 1, to: 100), speed: Faker::Number.between(from: 1, to: 100), user: @user)
+@character2= Character.create(name: "ron", attack: Faker::Number.between(from: 1, to: 100), defense: Faker::Number.between(from: 1, to: 100), speed: Faker::Number.between(from: 1, to: 100), user: @user)
+@character3= Character.create(name: "hermione", attack: Faker::Number.between(from: 1, to: 100), defense: Faker::Number.between(from: 1, to: 100), speed: Faker::Number.between(from: 1, to: 100), user: @user)
 
+@game =Game.create(name: "quidditch", rating: Faker::Number.decimal(l_digits: 1, r_digits: 1), description: "empty", price: Faker::Number.between(from: 30, to: 80) , category: "", user: @user)
 
-Game.create(name: "quidditch", raintg: Faker::Number.decimal(l_digits: 1, r_digits: 1) description: "", price: Faker::Number.between(from: 30, to: 80) , category: "")
-
+GamesCharacter.create(game: @game, character: @character1)
+GamesCharacter.create(game: @game, character: @character2)
+GamesCharacter.create(game: @game, character: @character3)

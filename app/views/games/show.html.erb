@@ -22,6 +22,33 @@
     <%= @game.category %>
 </p>
 
+<p>
+    <strong>Creator </strong>
+    <%= @game.user.username %>
+</p>
+
+
+<p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Characters of the game</th>
+            <th>Characters creator</th>
+        <tr>
+    <thead>
+    <tbody>
+        <% @game.characters.each do |character|%>
+            <tr>
+                <td><%= character.name%></td>
+                <td><%= character.user.username%></td>
+            <tr>
+        <%end%>
+    </tbody>
+</table>
+
+</p>
+
 <%= link_to 'Go back', games_index_path %>
 <%= link_to 'Edit game', games_edit_path(:id => @game.id) %>
 <%= link_to 'Delete game', games_delete_path(:id => @game.id), method: :delete %>
