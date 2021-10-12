@@ -14,7 +14,8 @@
 
 </p>
 
-<%= link_to 'Go back', characters_index_path %>
-<%= link_to 'Edit character', characters_edit_path(:id => @character.id) %>
-
+<%= link_to 'Go back', characters_path %>
+<% if user_signed_in? and current_user.id == @character.user_id%>
+<%= link_to 'Edit character', edit_character_path(:id => @character.id) %>
 <%= link_to 'Delete', character_path(@character.id), method: :delete %>
+<%end%>

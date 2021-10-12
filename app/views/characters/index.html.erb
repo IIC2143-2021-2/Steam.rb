@@ -23,4 +23,6 @@
     </tbody>
 </table>
 
-<%= link_to 'Upload a new character', characters_new_path %>
+        <% if user_signed_in? %>
+<%= link_to 'Upload a new character', new_character_path %>
+<%end%>

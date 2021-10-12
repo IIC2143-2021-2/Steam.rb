@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'characters/new'
-  get 'characters/create'
-  get 'characters/index'
-  get 'characters/edit'
-  get 'characters/update'
-  get 'characters/delete'
   devise_for :users, controllers: {
     sessions: 'users/sessions', 
     registrations: 'users/registrations'

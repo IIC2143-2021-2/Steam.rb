@@ -1,5 +1,6 @@
 <h1>Upload a new character</h1>
 
+        <% if user_signed_in? %>
 <%= form_with(model: @character, method: :post) do |form| %>
 
     <div>
@@ -21,6 +22,11 @@
         <%= form.label :defense %>
         <%= form.number_field :defense %>
     </div>
+
+    <div>
+        <%= form.label :user_id %>
+        <%= form.number_field :user_id, id: :user_id,  value:current_user.id,  type: "hidden"%>
+    </div>
     
 
     <div>
@@ -28,5 +34,11 @@
     </div>
 
 <% end %>
+<%else%>
+Debes estar registrado o iniciado sesion:
 
-<%= link_to 'Go back', characters_index_path %>
+      <%= link_to "Iniciar Sesión", new_user_session_path %>
+      <%= link_to "Registrarme", new_user_registration_path %>
+<%end%>
+
+<%= link_to 'Go back', characters_path %>

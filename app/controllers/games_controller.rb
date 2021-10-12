@@ -4,7 +4,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @games_params = params.require(:game).permit(:name, :rating, :description, :price, :category)
+    @games_params = params.require(:game).permit(:name, :rating, :description, :price, :category, :user_id)
     @game = Game.create(@games_params)
     if @game.save
       redirect_to games_index_path, notice: 'Game successfully created'
@@ -28,7 +28,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @games_new_params = params.require(:game).permit(:name, :rating, :description, :price, :category)
+    @games_new_params = params.require(:game).permit(:name, :rating, :description, :price, :category, :user_id)
     if @game.update(@games_new_params)
       redirect_to games_index_path, notice: 'Game edited correctly'
     else

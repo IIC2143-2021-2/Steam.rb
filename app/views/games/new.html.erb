@@ -1,5 +1,5 @@
 <h1>Upload a new game</h1>
-
+<% if user_signed_in? %>
 <%= form_with(model: @game, method: :post) do |form| %>
 
     <div>
@@ -28,9 +28,20 @@
     </div>
 
     <div>
+        <%= form.label :user_id %>
+        <%= form.number_field :user_id, id: :user_id,  value:current_user.id,  type: "hidden"%>
+    </div>
+
+    <div>
         <%= form.submit 'Create game' %>
     </div>
 
 <% end %>
+<%else%>
+Debes estar registrado o iniciado sesion:
+
+      <%= link_to "Iniciar Sesión", new_user_session_path %>
+      <%= link_to "Registrarme", new_user_registration_path %>
+<%end%>
 
 <%= link_to 'Go back', games_index_path %>

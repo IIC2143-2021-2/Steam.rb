@@ -50,5 +50,7 @@
 </p>
 
 <%= link_to 'Go back', games_index_path %>
+<% if user_signed_in? and current_user.id == @game.user_id%>
 <%= link_to 'Edit game', games_edit_path(:id => @game.id) %>
 <%= link_to 'Delete game', games_delete_path(:id => @game.id), method: :delete %>
+<%end%>
