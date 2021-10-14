@@ -9,8 +9,10 @@ class GamesController < ApplicationController
     if @game.save
       redirect_to games_index_path, notice: 'Game successfully created'
     else
-      redirect_to games_index_path, notice: 'Error while creating the game'
+      redirect_to user_session_path, notice: 'Error while creating the game, no user logged in'
     end
+    # @user = current_user ##############
+    # @game = @user.games.create(@games_params)
   end
 
   def index

@@ -13,9 +13,21 @@
 </p>
 
 <p>
-    <strong>Price: </strong>
+    <strong>Price (Dolars): </strong>
     <%= @game.price %>
 </p>
+
+<p>
+    <strong>Price (Chilean pesos): </strong>
+    <%= dolares_a_euros(@game.price) %>
+</p>
+
+<p>
+    <strong>Price (Euros): </strong>
+    <%= dolares_a_pesos_chilenos(@game.price) %>
+</p>
+
+
 
 <p>
     <strong>Category: </strong>
