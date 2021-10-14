@@ -4,16 +4,10 @@ class GamesController < ApplicationController
   end
 
   def create
-    @games_params = params.require(:game).permit(:name, :rating, :description, :price, :category)
-    #@game = Game.create(@games_params)
-    if current_user
-      @user = current_user ##############
-      @game = @user.games.create(@games_params)
-      if @game.save
-        redirect_to games_index_path, notice: 'Game successfully created'
-      else
-        redirect_to games_index_path, notice: 'Error while creating the game'
-      end
+    @games_params = params.require(:game).permit(:name, :rating, :description, :price, :category, :user_id)
+    @game = Game.create(@games_params)
+    if @game.save
+      redirect_to games_index_path, notice: 'Game successfully created'
     else
       redirect_to user_session_path, notice: 'Error while creating the game, no user logged in'
     end
@@ -27,6 +21,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @characters = @game.characters
   end
 
   def edit
@@ -35,7 +30,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @games_new_params = params.require(:game).permit(:name, :rating, :description, :price, :category)
+    @games_new_params = params.require(:game).permit(:name, :rating, :description, :price, :category, :user_id)
     if @game.update(@games_new_params)
       redirect_to games_index_path, notice: 'Game edited correctly'
     else

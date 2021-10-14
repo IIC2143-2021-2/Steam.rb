@@ -5,6 +5,9 @@
     <%= link_to ' Ver Perfil ', users_show_path(current_user.id)%>
 <% end %>
 
+    <%= link_to ' Ver Characters ', characters_path%>
+
+
 <table align='center'>
     <thead>
         <tr>
@@ -32,4 +35,6 @@
     </tbody>
 </table>
 
+        <% if user_signed_in? %>
 <%= link_to 'Upload a new game', games_new_path %>
+<%end%>

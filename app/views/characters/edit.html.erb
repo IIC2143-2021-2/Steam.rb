@@ -1,0 +1,47 @@
+<h1>Edit your character</h1>
+
+<% if user_signed_in?%>
+<% if@character.user_id == current_user.id %>
+<%= form_with(model: @character, method: :put, url: character_path(:id => @character.id)) do |form| %>
+
+    <div>
+        <%= form.label :Name %>
+        <%= form.text_field :name %>
+    </div>
+
+    <div>
+        <%= form.label :speed %>
+        <%= form.number_field :speed %>
+    </div>
+
+    <div>
+        <%= form.label :attack %>
+        <%= form.number_field :attack %>
+    </div>
+
+    <div>
+        <%= form.label :defense %>
+        <%= form.number_field :defense %>
+    </div>
+    
+
+
+    <div>
+        <%= form.label :user_id %>
+        <%= form.number_field :user_id, id: :user_id,  value:current_user.id, type: "hidden"%>
+    </div>
+
+        <%= form.submit 'Edit character' %>
+    </div>
+
+<% end %>
+<%else%>
+no puedes editar characters que no son tuyos!
+<%end%>
+<%else%>
+Debes estar registrado o iniciado sesion:
+
+      <%= link_to "Iniciar Sesión", new_user_session_path %>
+      <%= link_to "Registrarme", new_user_registration_path %>
+<%end%>
+<%= link_to 'Go back', character_path(:id => @character.id) %>

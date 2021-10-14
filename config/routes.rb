@@ -29,5 +29,9 @@ Rails.application.routes.draw do
   delete 'games/delete', to: 'games#delete', as: 'games_delete'
 
 
+  ######## RESOURCES ######
+  resources :characters
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
