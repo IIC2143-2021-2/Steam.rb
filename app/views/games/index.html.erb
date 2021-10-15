@@ -1,35 +1,27 @@
-<h1>Games</h1>
+<h1 class="title has-text-primary">Games</h1>
 
 <%= notice %>
 <% if current_user %>
     <%= link_to ' Ver Perfil ', users_show_path(current_user.id)%>
 <% end %>
 
-<table align='center'>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Rating</th>
-            <th>Description</th>
-            <th>Price (Dolars)</th>
-            <th>Category</th>
-            <th>Usuario</th>
-            <th colspan='3'></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @games.each do |game| %>
-            <tr>
-                <td><%= game.name %></td>
-                <td><%= game.rating %></td>
-                <td><%= game.description %></td>
-                <td><%= game.price %></td>
-                <td><%= game.category %></td>
-                <td><%= game.user.username %></td>
-                <td><%= link_to 'View details', games_show_path(:id => game.id) %></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+<br>
+<br>
 
-<%= link_to 'Upload a new game', games_new_path %>
+<div class='columns'>
+    <% @games.each do |game| %>
+        <div class="column has-background-primary">
+            <a class='is-size-2 has-text-weight-bold'><%= game.name%></a>
+            <br>
+            <p> Precio: $<%= game.price%> </p>
+            <p>Descripción: <%= game.description %></p>
+            <p> Rating: <%= game.rating %></p>
+            <p> Categoria: <%= game.category %></p>
+            <p><%= link_to 'View details', games_show_path(:id => game.id) %></p>
+        </div>
+    <% end %>
+</div>
+
+<a class='button is-primary is-outlined' href="<%= games_new_path %>">
+    Crear juego
+</a>
