@@ -1,0 +1,21 @@
+<h1>
+    <%= @character.name %>
+</h1>
+<h4>
+    attack: <%= @character.attack %>
+</h4>
+
+<h4>
+    defense: <%= @character.defense %>
+</h4>
+<h4>
+    Speed: <%= @character.speed %>
+</h4>
+
+</p>
+
+<%= link_to 'Go back', characters_path %>
+<% if user_signed_in? and current_user.id == @character.user_id%>
+<%= link_to 'Edit character', edit_character_path(:id => @character.id) %>
+<%= link_to 'Delete', character_path(@character.id), method: :delete %>
+<%end%>

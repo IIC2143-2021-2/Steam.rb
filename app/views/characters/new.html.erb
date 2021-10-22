@@ -1,6 +1,7 @@
-<h1>Upload a new game</h1>
-<% if user_signed_in? %>
-<%= form_with(model: @game, method: :post) do |form| %>
+<h1>Upload a new character</h1>
+
+        <% if user_signed_in? %>
+<%= form_with(model: @character, method: :post) do |form| %>
 
     <div>
         <%= form.label :Name %>
@@ -8,32 +9,28 @@
     </div>
 
     <div>
-        <%= form.label :Rating %>
-        <%= form.number_field :rating %>
+        <%= form.label :speed %>
+        <%= form.number_field :speed %>
     </div>
 
     <div>
-        <%= form.label :Description %>
-        <%= form.text_field :description %>
+        <%= form.label :attack %>
+        <%= form.number_field :attack %>
     </div>
 
     <div>
-        <%= form.label :Price %>
-        <%= form.number_field :price %>
-    </div>
-
-    <div>
-        <%= form.label :Category %>
-        <%= form.text_field :category %>
+        <%= form.label :defense %>
+        <%= form.number_field :defense %>
     </div>
 
     <div>
         <%= form.label :user_id %>
         <%= form.number_field :user_id, id: :user_id,  value:current_user.id,  type: "hidden"%>
     </div>
+    
 
     <div>
-        <%= form.submit 'Create game' %>
+        <%= form.submit 'Create character' %>
     </div>
 
 <% end %>
@@ -44,4 +41,4 @@ Debes estar registrado o iniciado sesion:
       <%= link_to "Registrarme", new_user_registration_path %>
 <%end%>
 
-<%= link_to 'Go back', games_index_path %>
+<%= link_to 'Go back', characters_path %>

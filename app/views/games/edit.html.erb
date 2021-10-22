@@ -1,7 +1,8 @@
 <h1>Edit your game</h1>
 
+<% if user_signed_in?%>
+<%if @game.user_id == current_user.id%>
 <%= form_with(model: @game, method: :patch, url: games_update_path(:id => @game.id)) do |form| %>
-
     <div>
         <%= form.label :Name %>
         <%= form.text_field :name %>
@@ -27,10 +28,26 @@
         <%= form.text_field :category %>
     </div>
 
+
+    <div>
+        <%= form.label :user_id %>
+        <%= form.number_field :user_id, id: :user_id,  value:current_user.id,  type: "hidden"%>
+    </div>
     <div>
         <%= form.submit 'Edit game' %>
     </div>
 
 <% end %>
+<%else%>
+
+no puedes editar characters que no son tuyos!
+
+<%end%>
+<%else%>
+Debes estar registrado o iniciado sesion:
+
+      <%= link_to "Iniciar Sesión", new_user_session_path %>
+      <%= link_to "Registrarme", new_user_registration_path %>
+<%end%>
 
 <%= link_to 'Go back', games_show_path(:id => @game.id) %>
