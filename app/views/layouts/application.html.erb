@@ -9,16 +9,35 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav class="navbar  has-background-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img id="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Escudo_de_la_Pontificia_Universidad_Cat%C3%B3lica_de_Chile.svg/1200px-Escudo_de_la_Pontificia_Universidad_Cat%C3%B3lica_de_Chile.svg.png" width="112" height="28">
+    </a>
+
+  </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <% if current_user %>
+            <a class='button is-primary is-outlined' href="<%= destroy_user_session_path %>" data-method="delete">
+              Cerrar sesión
+            </a>
+          <% else %>
+              <a class='button is-primary is-outlined' href="<%= new_user_session_path %>">
+                Iniciar sesión
+              </a>
+              <a class='button is-primary is-outlined' href="<%= new_user_registration_path %>">
+                Registrarse
+              </a>
+          <% end %>
+        </div>
+      </div>
+
+  </div>
+</nav>
   <body align='center'>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <% if current_user %>
-      <%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Iniciar Sesión", new_user_session_path %>
-      <%= link_to "Registrarme", new_user_registration_path %>
-    <% end %>
-
   </body>
 </html>
